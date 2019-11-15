@@ -6,12 +6,14 @@ import java.util.Map;
 import java.util.Objects;
 
 public class MappingProfile {
-    // incoming
+    // type of incoming source
     private SourceType sourceType;
-    // outcoming
+    // type of outcoming mapped target
     private TargetType targetType;
+
     // rules
     private List<String> mappingRules;
+
 
     public SourceType getSourceType() {
         return sourceType;
