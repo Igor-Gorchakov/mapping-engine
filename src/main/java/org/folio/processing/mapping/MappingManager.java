@@ -11,7 +11,7 @@ import java.util.Optional;
 public class MappingManager {
 
     @SuppressWarnings("unchecked")
-    public static <TARGET, SOURCE> EventContext map(EventContext eventContext) {
+    public static EventContext map(EventContext eventContext) {
         MappingProfile mappingProfile = eventContext.getMappingProfile();
         MappingProfile.SourceType sourceType = mappingProfile.getSourceType();
         MappingProfile.TargetType targetType = mappingProfile.getTargetType();
@@ -20,16 +20,15 @@ public class MappingManager {
         if (optionalMapper.isPresent()) {
             List<String> mappingRules = mappingProfile.getMappingRules();
             try {
-                Mapper<SOURCE, TARGET> mapper = (Mapper<SOURCE, TARGET>) optionalMapper.get();
-                TARGET target = mapper.map(source, mappingRules);
-                return Optional.of(target);
+                Mapper mapper = optionalMapper.get();
+                mapper.map(eventContext);
             } catch (Exception e) {
                 // logger - exception occurred
             }
         } else {
             // logger - no mapper found
         }
-        return Optional.empty();
+        return eventContext;
     }
 
     private static Optional<Mapper> findMapper(MappingProfile.SourceType profileSourceType, MappingProfile.TargetType profileTargetType) {

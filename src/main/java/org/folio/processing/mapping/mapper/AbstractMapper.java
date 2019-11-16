@@ -2,7 +2,7 @@ package org.folio.processing.mapping.mapper;
 
 import org.folio.processing.mapping.model.MappingProfile;
 
-public abstract class AbstractMapper<SOURCE, TARGET> implements Mapper<SOURCE, TARGET> {
+public abstract class AbstractMapper implements Mapper {
     protected MappingProfile.SourceType sourceType;
     protected MappingProfile.TargetType targetType;
 

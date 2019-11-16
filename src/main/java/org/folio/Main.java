@@ -1,6 +1,7 @@
 package org.folio;
 
 import org.folio.processing.mapping.MappingManager;
+import org.folio.processing.mapping.model.EventContext;
 import org.folio.processing.mapping.model.Invoice;
 import org.folio.processing.mapping.model.MappingProfile;
 import org.folio.processing.mapping.model.MarcRecord;
@@ -14,13 +15,11 @@ public class Main {
         mappingProfile.setSourceType(MappingProfile.SourceType.MARC_BIBLIOGRAPHIC);
         mappingProfile.setTargetType(MappingProfile.TargetType.INVOICE);
 
-        MarcRecord source = new MarcRecord();
+        EventContext eventContext = new EventContext();
+        eventContext.setMappingProfile(mappingProfile);
 
-        Optional<Invoice> optionalInvoice = MappingManager.map(source, mappingProfile);
+        MappingManager.map(eventContext);
 
-        if (optionalInvoice.isPresent()) {
-            Invoice invoice = optionalInvoice.get();
-            System.out.println(invoice);
-        }
+        System.out.println(eventContext);
     }
 }

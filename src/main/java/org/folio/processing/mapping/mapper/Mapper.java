@@ -1,12 +1,13 @@
 package org.folio.processing.mapping.mapper;
 
+import org.folio.processing.mapping.model.EventContext;
 import org.folio.processing.mapping.model.MappingProfile;
 
 import java.util.List;
 
-public interface Mapper<SOURCE, TARGET> {
+public interface Mapper {
 
-    TARGET map(SOURCE source, List<String> mappingRules);
+    EventContext map(EventContext eventContext);
 
     MappingProfile.SourceType getSourceType();
 
