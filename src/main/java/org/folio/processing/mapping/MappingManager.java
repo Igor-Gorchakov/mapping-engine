@@ -18,7 +18,6 @@ public class MappingManager {
 
         Optional<Mapper> optionalMapper = findMapper(sourceType, targetType);
         if (optionalMapper.isPresent()) {
-            List<String> mappingRules = mappingProfile.getMappingRules();
             try {
                 Mapper mapper = optionalMapper.get();
                 mapper.map(eventContext);
