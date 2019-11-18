@@ -6,11 +6,11 @@ import org.folio.processing.mapping.model.EventContext;
 import org.folio.processing.mapping.model.MappingProfile;
 
 import java.util.Optional;
-
+import java.util.logging.Logger;
 
 public class MappingManager {
+    private final static Logger LOGGER = Logger.getLogger(MappingManager.class.getName());
 
-    @SuppressWarnings("unchecked")
     public static EventContext map(EventContext eventContext) {
         MappingProfile mappingProfile = eventContext.getMappingProfile();
         MappingProfile.SourceType sourceType = mappingProfile.getSourceType();
@@ -18,14 +18,14 @@ public class MappingManager {
 
         Optional<Mapper> optionalMapper = findMapper(sourceType, targetType);
         if (optionalMapper.isPresent()) {
+            Mapper mapper = optionalMapper.get();
             try {
-                Mapper mapper = optionalMapper.get();
                 mapper.map(eventContext);
             } catch (Exception e) {
-                // logger - exception occurred
+                LOGGER.warning("Exception occurred in Mapper " + mapper.getClass().getSimpleName());
             }
         } else {
-            // logger - no mapper found
+            LOGGER.warning("No mapper found for given [source " + sourceType + " target " + targetType + " ]");
         }
         return eventContext;
     }

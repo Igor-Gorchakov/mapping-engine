@@ -1,7 +1,11 @@
 package org.folio.processing.mapping;
 
 import org.folio.processing.mapping.model.EventContext;
+import org.folio.processing.mapping.model.Holder;
+import org.folio.processing.mapping.model.Instance;
+import org.folio.processing.mapping.model.Invoice;
 import org.folio.processing.mapping.model.MappingProfile;
+import org.folio.processing.mapping.model.MarcRecord;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,30 +17,34 @@ public class MappingManagerUnitTest {
     @Test
     public void marcBibToInstance() {
         // given
+        EventContext eventContext = new EventContext();
+        eventContext.setMarcRecord(new MarcRecord());
         MappingProfile mappingProfile = new MappingProfile();
         mappingProfile.setSourceType(MappingProfile.SourceType.MARC_BIBLIOGRAPHIC);
         mappingProfile.setTargetType(MappingProfile.TargetType.INSTANCE);
-        EventContext eventContext = new EventContext();
         eventContext.setMappingProfile(mappingProfile);
         // when
         MappingManager.map(eventContext);
         // then
-        Assert.assertNotNull(eventContext.getObjects());
-        Assert.assertNotNull(eventContext.getObjects().get("mappedInstance"));
+        Holder<Instance> instanceHolder = eventContext.getFromMappingContext("mappedInstance");
+        Instance instance = instanceHolder.getValue();
+        Assert.assertNotNull(instance);
     }
 
     @Test
     public void marcBibToInvoice() {
         // given
+        EventContext eventContext = new EventContext();
+        eventContext.setMarcRecord(new MarcRecord());
         MappingProfile mappingProfile = new MappingProfile();
         mappingProfile.setSourceType(MappingProfile.SourceType.MARC_BIBLIOGRAPHIC);
         mappingProfile.setTargetType(MappingProfile.TargetType.INVOICE);
-        EventContext eventContext = new EventContext();
         eventContext.setMappingProfile(mappingProfile);
         // when
         MappingManager.map(eventContext);
         // then
-        Assert.assertNotNull(eventContext.getObjects());
-        Assert.assertNotNull(eventContext.getObjects().get("mappedInvoice"));
+        Holder<Invoice> invoiceHolder = eventContext.getFromMappingContext("mappedInvoice");
+        Invoice invoice = invoiceHolder.getValue();
+        Assert.assertNotNull(invoice);
     }
 }
