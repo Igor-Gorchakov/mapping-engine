@@ -25,7 +25,7 @@ public class MappingManager {
                 LOGGER.warning("Exception occurred in Mapper " + mapper.getClass().getSimpleName());
             }
         } else {
-            LOGGER.warning("No mapper found for given [source " + sourceType + " target " + targetType + " ]");
+            LOGGER.warning("Can not map, no mapper found for given [source " + sourceType + " target " + targetType + " ]");
         }
         return eventContext;
     }
