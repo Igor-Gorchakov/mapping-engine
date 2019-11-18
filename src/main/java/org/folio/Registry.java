@@ -1,4 +1,4 @@
-package org.folio.processing.mapping;
+package org.folio;
 
 import org.folio.processing.mapping.mapper.Mapper;
 import org.folio.processing.mapping.mapper.MarcBibToInstanceMapper;

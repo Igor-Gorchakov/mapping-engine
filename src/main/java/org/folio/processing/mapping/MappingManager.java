@@ -1,10 +1,10 @@
 package org.folio.processing.mapping;
 
+import org.folio.Registry;
 import org.folio.processing.mapping.mapper.Mapper;
 import org.folio.processing.mapping.model.EventContext;
 import org.folio.processing.mapping.model.MappingProfile;
 
-import java.util.List;
 import java.util.Optional;
 
 
