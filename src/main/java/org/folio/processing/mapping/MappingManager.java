@@ -1,38 +1,36 @@
 package org.folio.processing.mapping;
 
-import org.folio.Registry;
-import org.folio.processing.mapping.mapper.Mapper;
-import org.folio.processing.mapping.model.EventContext;
-import org.folio.processing.mapping.model.MappingProfile;
 
-import java.util.Optional;
+import org.folio.processing.mapping.mapper.Mapper;
+import org.folio.processing.mapping.mapper.reader.Reader;
+import org.folio.processing.mapping.mapper.writer.Writer;
+import org.folio.processing.mapping.model.context.EventContext;
+import org.folio.processing.mapping.model.context.MappingProfile;
+import org.folio.processing.mapping.model.context.MappingProfile.EntityType;
+
 import java.util.logging.Logger;
 
-public class MappingManager {
+public final class MappingManager {
+
     private final static Logger LOGGER = Logger.getLogger(MappingManager.class.getName());
+    private static MapperFactory mapperFactory = new MapperFactory();
 
     public static EventContext map(EventContext eventContext) {
         MappingProfile mappingProfile = eventContext.getMappingProfile();
-        MappingProfile.SourceType sourceType = mappingProfile.getSourceType();
-        MappingProfile.TargetType targetType = mappingProfile.getTargetType();
-
-        Optional<Mapper> optionalMapper = findMapper(sourceType, targetType);
-        if (optionalMapper.isPresent()) {
-            Mapper mapper = optionalMapper.get();
-            try {
-                mapper.map(eventContext);
-            } catch (Exception e) {
-                LOGGER.warning("Exception occurred in Mapper " + mapper.getClass().getSimpleName());
-            }
-        } else {
-            LOGGER.warning("Can not map, no mapper found for given [source " + sourceType + " target " + targetType + " ]");
+        Mapper mapper = mapperFactory.buildMapper(mappingProfile);
+        try {
+            mapper.map(eventContext);
+        } catch (Exception e) {
+            LOGGER.warning("Exception occurred in Mapper " + e.getMessage());
         }
         return eventContext;
     }
 
-    private static Optional<Mapper> findMapper(MappingProfile.SourceType profileSourceType, MappingProfile.TargetType profileTargetType) {
-        return Registry.mappers.stream()
-                .filter(mapper -> mapper.getSourceType().equals(profileSourceType) && mapper.getTargetType().equals(profileTargetType))
-                .findFirst();
+    public static Reader registerReader(EntityType entityType, Reader reader) {
+        return mapperFactory.addReader(entityType, reader);
+    }
+
+    public static Writer registeWriter(EntityType entityType, Writer writer) {
+        return mapperFactory.addWriter(entityType, writer);
     }
 }

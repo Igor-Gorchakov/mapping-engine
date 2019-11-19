@@ -1,50 +1,81 @@
 package org.folio.processing.mapping;
 
-import org.folio.processing.mapping.model.EventContext;
-import org.folio.processing.mapping.model.Holder;
-import org.folio.processing.mapping.model.Instance;
-import org.folio.processing.mapping.model.Invoice;
-import org.folio.processing.mapping.model.MappingProfile;
-import org.folio.processing.mapping.model.MarcRecord;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.folio.processing.mapping.model.context.EventContext;
+import org.folio.processing.mapping.model.context.MappingProfile;
+import org.folio.processing.mapping.model.schemas.Instance;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.util.UUID;
+
 @RunWith(JUnit4.class)
 public class MappingManagerUnitTest {
 
     @Test
-    public void marcBibToInstance() {
+    public void marcAuthorityToInstance() throws JsonProcessingException {
         // given
-        EventContext eventContext = new EventContext();
-        eventContext.setMarcRecord(new MarcRecord());
         MappingProfile mappingProfile = new MappingProfile();
-        mappingProfile.setSourceType(MappingProfile.SourceType.MARC_BIBLIOGRAPHIC);
-        mappingProfile.setTargetType(MappingProfile.TargetType.INSTANCE);
+        mappingProfile.setIncomingRecordType(MappingProfile.EntityType.MARC_AUTHORITY);
+        mappingProfile.setExistingRecordType(MappingProfile.EntityType.INSTANCE);
+
+        String marcAuthorityRecord = new String();
+        String matchedInstance = new ObjectMapper().writeValueAsString(new Instance(UUID.randomUUID().toString()));
+
+        EventContext eventContext = new EventContext();
         eventContext.setMappingProfile(mappingProfile);
+        eventContext.putObject("marcAuthorityRecord", marcAuthorityRecord);
+        eventContext.putObject("instance", matchedInstance);
         // when
         MappingManager.map(eventContext);
         // then
-        Holder<Instance> instanceHolder = eventContext.getFromMappingContext("mappedInstance");
-        Instance instance = instanceHolder.getValue();
+        String instance = eventContext.getObjects().get("instance");
         Assert.assertNotNull(instance);
     }
 
     @Test
-    public void marcBibToInvoice() {
+    public void marcBibliographicToInstance() throws JsonProcessingException {
         // given
-        EventContext eventContext = new EventContext();
-        eventContext.setMarcRecord(new MarcRecord());
         MappingProfile mappingProfile = new MappingProfile();
-        mappingProfile.setSourceType(MappingProfile.SourceType.MARC_BIBLIOGRAPHIC);
-        mappingProfile.setTargetType(MappingProfile.TargetType.INVOICE);
+        mappingProfile.setIncomingRecordType(MappingProfile.EntityType.MARC_BIBLIOGRAPHIC);
+        mappingProfile.setExistingRecordType(MappingProfile.EntityType.INSTANCE);
+
+        String marcBibliographicRecord = new String();
+        String matchedInstance = new ObjectMapper().writeValueAsString(new Instance(UUID.randomUUID().toString()));
+
+        EventContext eventContext = new EventContext();
         eventContext.setMappingProfile(mappingProfile);
+        eventContext.putObject("marcBibliographicRecord", marcBibliographicRecord);
+        eventContext.putObject("instance", matchedInstance);
         // when
         MappingManager.map(eventContext);
         // then
-        Holder<Invoice> invoiceHolder = eventContext.getFromMappingContext("mappedInvoice");
-        Invoice invoice = invoiceHolder.getValue();
-        Assert.assertNotNull(invoice);
+        String mappedInstance = eventContext.getObjects().get("instance");
+        Assert.assertNotNull(mappedInstance);
+
+    }
+
+    @Test
+    public void marcHoldingsToInstance() throws JsonProcessingException {
+        // given
+        MappingProfile mappingProfile = new MappingProfile();
+        mappingProfile.setIncomingRecordType(MappingProfile.EntityType.MARC_HOLDINGS);
+        mappingProfile.setExistingRecordType(MappingProfile.EntityType.INSTANCE);
+
+        String marcHoldingsRecord = new String();
+        String matchedInstance = new ObjectMapper().writeValueAsString(new Instance(UUID.randomUUID().toString()));
+
+        EventContext eventContext = new EventContext();
+        eventContext.setMappingProfile(mappingProfile);
+        eventContext.putObject("marcHoldingsRecord", marcHoldingsRecord);
+        eventContext.putObject("instance", matchedInstance);
+        // when
+        MappingManager.map(eventContext);
+        // then
+        String instance = eventContext.getObjects().get("instance");
+        Assert.assertNotNull(instance);
     }
 }
