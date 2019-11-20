@@ -9,7 +9,6 @@ import org.folio.processing.mapping.model.context.EventContext;
 import org.folio.processing.mapping.model.context.MappingProfile;
 import org.folio.processing.mapping.model.context.Rule;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +21,7 @@ public class Mapper {
         this.writerFactory = writerFactory;
     }
 
-    public EventContext map(EventContext eventContext) throws IOException {
+    public EventContext map(EventContext eventContext) {
         MappingProfile mappingProfile = eventContext.getMappingProfile();
         Map<String, Object> eventContextObjects = eventContext.getObjects();
         Reader reader = readerFactory.build(mappingProfile.getIncomingRecordType(), eventContextObjects);
