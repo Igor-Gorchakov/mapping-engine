@@ -23,7 +23,7 @@ public class ReaderFactoryImpl implements ReaderFactory {
     }
 
     @Override
-    public Reader registerReader(Reader reader, EntityType entityType) {
-        return null;
+    public Reader registerReader(Reader reader) {
+        throw new UnsupportedOperationException("Reader registration is not supported");
     }
 }

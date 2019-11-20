@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 public class MappingProfile {
+    // from
     private EntityType incomingRecordType;
+    // to
     private EntityType existingRecordType;
     private List<Rule> mappingRules;
 

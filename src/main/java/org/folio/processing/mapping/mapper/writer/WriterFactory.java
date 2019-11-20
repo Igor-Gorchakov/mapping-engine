@@ -10,7 +10,7 @@ public interface WriterFactory {
 
     Writer build(EntityType entityType, Map<String, Object> eventContextObjects);
 
-    Writer registerWriter(Writer writer, EntityType entityType);
+    Writer registerWriter(Writer writer);
 
     static WriterFactory factory() {
         return new WriterFactoryImpl();

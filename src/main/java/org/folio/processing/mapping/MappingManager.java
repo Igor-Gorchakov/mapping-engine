@@ -6,7 +6,6 @@ import org.folio.processing.mapping.mapper.reader.ReaderFactory;
 import org.folio.processing.mapping.mapper.writer.Writer;
 import org.folio.processing.mapping.mapper.writer.WriterFactory;
 import org.folio.processing.mapping.model.context.EventContext;
-import org.folio.processing.mapping.model.context.MappingProfile.EntityType;
 
 import java.util.logging.Logger;
 
@@ -28,11 +27,11 @@ public final class MappingManager {
         return eventContext;
     }
 
-    public static Reader registerReader(Reader reader, EntityType entityType) {
-        return readerFactory.registerReader(reader, entityType);
+    public static Reader registerReader(Reader reader) {
+        return readerFactory.registerReader(reader);
     }
 
-    public static Writer registerWriter(Writer writer, EntityType entityType) {
-        return writerFactory.registerWriter(writer, entityType);
+    public static Writer registerWriter(Writer writer) {
+        return writerFactory.registerWriter(writer);
     }
 }

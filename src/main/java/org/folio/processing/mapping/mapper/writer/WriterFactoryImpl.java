@@ -21,7 +21,7 @@ public class WriterFactoryImpl implements WriterFactory {
     }
 
     @Override
-    public Writer registerWriter(Writer writer, MappingProfile.EntityType entityType) {
-        return null;
+    public Writer registerWriter(Writer writer) {
+        throw new UnsupportedOperationException("Writer registration is not supported");
     }
 }

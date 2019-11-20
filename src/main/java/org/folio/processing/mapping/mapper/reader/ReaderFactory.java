@@ -9,7 +9,7 @@ public interface ReaderFactory {
 
     Reader build(EntityType entityType, Map<String, Object> eventContextObjects);
 
-    Reader registerReader(Reader reader, EntityType entityType);
+    Reader registerReader(Reader reader);
 
     static ReaderFactory factory() {
         return new ReaderFactoryImpl();
