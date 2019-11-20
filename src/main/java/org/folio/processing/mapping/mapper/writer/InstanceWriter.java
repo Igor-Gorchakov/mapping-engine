@@ -13,12 +13,16 @@ public class InstanceWriter implements Writer {
     }
 
     @Override
+    public void initialize(EventContext eventContext) {
+
+    }
+
+    @Override
     public void write(String field, Value value) {
         this.instance.setName(((StringValue) value).getValue());
     }
 
-    public EventContext end(EventContext eventContext) {
+    public void end(EventContext eventContext) {
         eventContext.putObject("instance", instance);
-        return eventContext;
     }
 }

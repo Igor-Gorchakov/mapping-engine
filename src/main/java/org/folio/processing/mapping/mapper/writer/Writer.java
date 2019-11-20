@@ -5,7 +5,9 @@ import org.folio.processing.mapping.model.context.EventContext;
 
 public interface Writer {
 
+    void initialize(EventContext eventContext);
+
     void write(String field, Value value);
 
-    EventContext end(EventContext eventContext);
+    void end(EventContext eventContext);
 }
