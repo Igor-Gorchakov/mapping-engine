@@ -1,7 +1,7 @@
 package org.folio.processing.mapping.mapper.reader;
 
-import org.folio.processing.mapping.mapper.value.StringContainer;
-import org.folio.processing.mapping.mapper.value.ValueContainer;
+import org.folio.processing.mapping.mapper.value.StringValue;
+import org.folio.processing.mapping.mapper.value.Value;
 import org.folio.processing.mapping.model.schemas.MarcBibliographicRecord;
 
 public class MarcBibliographicReader implements Reader {
@@ -13,7 +13,7 @@ public class MarcBibliographicReader implements Reader {
     }
 
     @Override
-    public ValueContainer read(String rule) {
-        return new StringContainer("stub title");
+    public Value read(java.lang.String rule) {
+        return new StringValue("stub title");
     }
 }

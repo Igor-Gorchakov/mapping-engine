@@ -1,8 +1,8 @@
 package org.folio.processing.mapping.mapper.reader;
 
-import org.folio.processing.mapping.mapper.value.ValueContainer;
+import org.folio.processing.mapping.mapper.value.Value;
 
 public interface Reader {
 
-    ValueContainer read(String rule);
+    Value read(String rule);
 }

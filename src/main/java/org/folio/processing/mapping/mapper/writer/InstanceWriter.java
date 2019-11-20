@@ -1,6 +1,6 @@
 package org.folio.processing.mapping.mapper.writer;
 
-import org.folio.processing.mapping.mapper.value.ValueContainer;
+import org.folio.processing.mapping.mapper.value.Value;
 import org.folio.processing.mapping.model.context.EventContext;
 import org.folio.processing.mapping.model.schemas.Instance;
 
@@ -12,7 +12,7 @@ public class InstanceWriter implements Writer {
     }
 
     @Override
-    public void write(String rule, ValueContainer value) {
+    public void write(String rule, Value value) {
 
     }
 

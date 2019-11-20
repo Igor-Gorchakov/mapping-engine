@@ -1,5 +1,5 @@
 package org.folio.processing.mapping.mapper.value;
 
-public interface ValueContainer<T> {
+public interface Value<T> {
     T getValue();
 }

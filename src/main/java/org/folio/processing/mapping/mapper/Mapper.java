@@ -2,7 +2,7 @@ package org.folio.processing.mapping.mapper;
 
 import org.folio.processing.mapping.mapper.reader.Reader;
 import org.folio.processing.mapping.mapper.reader.ReaderFactory;
-import org.folio.processing.mapping.mapper.value.ValueContainer;
+import org.folio.processing.mapping.mapper.value.Value;
 import org.folio.processing.mapping.mapper.writer.Writer;
 import org.folio.processing.mapping.mapper.writer.WriterFactory;
 import org.folio.processing.mapping.model.context.EventContext;
@@ -28,7 +28,7 @@ public class Mapper {
         Writer writer = writerFactory.build(mappingProfile.getExistingRecordType(), eventContextObjects);
         List<String> mappingRules = mappingProfile.getMappingRules();
         for (String rule : mappingRules) {
-            ValueContainer value = reader.read(rule);
+            Value value = reader.read(rule);
             writer.write(rule, value);
         }
         return writer.end(eventContext);
