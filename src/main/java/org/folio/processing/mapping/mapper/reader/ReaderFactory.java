@@ -7,11 +7,11 @@ import static org.folio.processing.mapping.model.context.MappingProfile.EntityTy
 
 public interface ReaderFactory {
 
-    Reader build(EntityType entityType, Map<String, Object> eventContextObjects);
-
-    Reader registerReader(Reader reader);
-
     static ReaderFactory factory() {
         return new ReaderFactoryImpl();
     }
+
+    Reader build(EntityType entityType, Map<String, Object> eventContextObjects);
+
+    Reader registerReader(Reader reader);
 }

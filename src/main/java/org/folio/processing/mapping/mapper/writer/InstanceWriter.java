@@ -1,9 +1,9 @@
 package org.folio.processing.mapping.mapper.writer;
 
-import org.folio.processing.mapping.model.context.EventContext;
-import org.folio.processing.mapping.model.schemas.Instance;
 import org.folio.processing.mapping.mapper.value.StringValue;
 import org.folio.processing.mapping.mapper.value.Value;
+import org.folio.processing.mapping.model.context.EventContext;
+import org.folio.processing.mapping.model.schemas.Instance;
 
 public class InstanceWriter implements Writer {
     private Instance instance;

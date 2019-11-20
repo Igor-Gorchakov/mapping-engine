@@ -1,10 +1,10 @@
 package org.folio.processing.mapping.mapper.reader;
 
+import org.folio.processing.mapping.mapper.value.StringValue;
+import org.folio.processing.mapping.mapper.value.Value;
 import org.folio.processing.mapping.model.context.MappingProfile;
 import org.folio.processing.mapping.model.context.Rule;
 import org.folio.processing.mapping.model.schemas.MarcBibliographicRecord;
-import org.folio.processing.mapping.mapper.value.StringValue;
-import org.folio.processing.mapping.mapper.value.Value;
 
 public class MarcBibliographicReader implements Reader {
 

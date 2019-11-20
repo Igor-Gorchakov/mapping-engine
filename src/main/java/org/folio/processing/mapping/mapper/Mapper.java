@@ -2,12 +2,12 @@ package org.folio.processing.mapping.mapper;
 
 import org.folio.processing.mapping.mapper.reader.Reader;
 import org.folio.processing.mapping.mapper.reader.ReaderFactory;
-import org.folio.processing.mapping.model.context.Rule;
 import org.folio.processing.mapping.mapper.value.Value;
 import org.folio.processing.mapping.mapper.writer.Writer;
 import org.folio.processing.mapping.mapper.writer.WriterFactory;
 import org.folio.processing.mapping.model.context.EventContext;
 import org.folio.processing.mapping.model.context.MappingProfile;
+import org.folio.processing.mapping.model.context.Rule;
 
 import java.io.IOException;
 import java.util.List;
