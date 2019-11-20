@@ -1,10 +1,11 @@
 package org.folio.processing.mapping.mapper.writer;
 
+import org.folio.processing.mapping.mapper.value.ValueContainer;
 import org.folio.processing.mapping.model.context.EventContext;
-
-import java.io.IOException;
 
 public interface Writer {
 
-    EventContext write(String entity, EventContext eventContext) throws IOException;
+    void write(String rule, ValueContainer value);
+
+    EventContext end(EventContext eventContext);
 }

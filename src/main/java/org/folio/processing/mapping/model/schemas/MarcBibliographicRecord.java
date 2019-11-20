@@ -1,4 +1,4 @@
 package org.folio.processing.mapping.model.schemas;
 
-public class MarcRecord {
+public class MarcBibliographicRecord {
 }

@@ -1,11 +1,13 @@
 package org.folio.processing.mapping.model.context;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MappingProfile {
     private EntityType incomingRecordType;
     private EntityType existingRecordType;
+    private List<String> mappingRules;
 
     public EntityType getIncomingRecordType() {
         return incomingRecordType;
@@ -21,6 +23,14 @@ public class MappingProfile {
 
     public void setExistingRecordType(EntityType existingRecordType) {
         this.existingRecordType = existingRecordType;
+    }
+
+    public List<String> getMappingRules() {
+        return mappingRules;
+    }
+
+    public void setMappingRules(List<String> mappingRules) {
+        this.mappingRules = mappingRules;
     }
 
     public enum EntityType {

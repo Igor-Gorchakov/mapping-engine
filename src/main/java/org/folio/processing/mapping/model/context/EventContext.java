@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class EventContext {
     private MappingProfile mappingProfile;
-    private Map<String, String> objects = new HashMap<>();
+    private Map<String, Object> objects = new HashMap<>();
 
     public MappingProfile getMappingProfile() {
         return mappingProfile;
@@ -16,15 +16,15 @@ public class EventContext {
         this.mappingProfile = mappingProfile;
     }
 
-    public Map<String, String> getObjects() {
+    public Map<String, Object> getObjects() {
         return objects;
     }
 
-    public void setObjects(Map<String, String> objects) {
+    public void setObjects(Map<String, Object> objects) {
         this.objects = objects;
     }
 
-    public String putObject(String key, String object) {
+    public Object putObject(String key, Object object) {
         return this.objects.put(key, object);
     }
 }
