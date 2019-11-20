@@ -26,7 +26,7 @@ public class MappingManagerUnitTest {
         MappingProfile mappingProfile = new MappingProfile();
         mappingProfile.setIncomingRecordType(MappingProfile.EntityType.MARC_BIBLIOGRAPHIC); // FROM
         mappingProfile.setExistingRecordType(MappingProfile.EntityType.INSTANCE);           // TO
-        mappingProfile.setMappingRules(Arrays.asList(new Rule("indexTitle", "TRIM")));
+        mappingProfile.setMappingRules(Arrays.asList(new Rule("indexTitle", "SET indexTitle")));
 
         EventContext eventContext = new EventContext();
         eventContext.putObject("marcBibliographicRecord", marcBibliographicRecord);
