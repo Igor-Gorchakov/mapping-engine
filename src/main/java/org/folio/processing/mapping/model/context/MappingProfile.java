@@ -7,7 +7,7 @@ import java.util.Map;
 public class MappingProfile {
     private EntityType incomingRecordType;
     private EntityType existingRecordType;
-    private List<String> mappingRules;
+    private List<Rule> mappingRules;
 
     public EntityType getIncomingRecordType() {
         return incomingRecordType;
@@ -25,11 +25,11 @@ public class MappingProfile {
         this.existingRecordType = existingRecordType;
     }
 
-    public List<String> getMappingRules() {
+    public List<Rule> getMappingRules() {
         return mappingRules;
     }
 
-    public void setMappingRules(List<String> mappingRules) {
+    public void setMappingRules(List<Rule> mappingRules) {
         this.mappingRules = mappingRules;
     }
 

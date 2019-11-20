@@ -2,6 +2,7 @@ package org.folio.processing.mapping.mapper;
 
 import org.folio.processing.mapping.mapper.reader.Reader;
 import org.folio.processing.mapping.mapper.reader.ReaderFactory;
+import org.folio.processing.mapping.model.context.Rule;
 import org.folio.processing.mapping.mapper.value.Value;
 import org.folio.processing.mapping.mapper.writer.Writer;
 import org.folio.processing.mapping.mapper.writer.WriterFactory;
@@ -26,10 +27,10 @@ public class Mapper {
         Map<String, Object> eventContextObjects = eventContext.getObjects();
         Reader reader = readerFactory.build(mappingProfile.getIncomingRecordType(), eventContextObjects);
         Writer writer = writerFactory.build(mappingProfile.getExistingRecordType(), eventContextObjects);
-        List<String> mappingRules = mappingProfile.getMappingRules();
-        for (String rule : mappingRules) {
+        List<Rule> mappingRules = mappingProfile.getMappingRules();
+        for (Rule rule : mappingRules) {
             Value value = reader.read(rule);
-            writer.write(rule, value);
+            writer.write(rule.getField(), value);
         }
         return writer.end(eventContext);
     }
