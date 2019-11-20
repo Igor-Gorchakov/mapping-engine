@@ -20,17 +20,14 @@ public class MappingManagerUnitTest {
     @Test
     public void shouldMap_MarcBibliographicToInstance() {
         // given
-        MarcBibliographicRecord marcBibliographicRecord = new MarcBibliographicRecord();    // FROM
-        Instance matchedInstance = new Instance(UUID.randomUUID().toString());              // TO
-
         MappingProfile mappingProfile = new MappingProfile();
         mappingProfile.setIncomingRecordType(MappingProfile.EntityType.MARC_BIBLIOGRAPHIC); // FROM
         mappingProfile.setExistingRecordType(MappingProfile.EntityType.INSTANCE);           // TO
         mappingProfile.setMappingRules(Arrays.asList(new Rule("indexTitle", "SET indexTitle")));
 
         EventContext eventContext = new EventContext();
-        eventContext.putObject("marcBibliographicRecord", marcBibliographicRecord);
-        eventContext.putObject("instance", matchedInstance);
+        eventContext.putObject("marcBibliographicRecord", new MarcBibliographicRecord());   // FROM
+        eventContext.putObject("instance", new Instance(UUID.randomUUID().toString()));     // TO
         eventContext.setMappingProfile(mappingProfile);
         // when
         MappingManager.map(eventContext);
