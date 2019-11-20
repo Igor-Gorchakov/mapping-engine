@@ -30,7 +30,7 @@ public class Mapper {
         List<Rule> mappingRules = mappingProfile.getMappingRules();
         for (Rule rule : mappingRules) {
             Value value = reader.read(rule);
-            writer.write(rule.getField(), value);
+            writer.write(rule.getFieldName(), value);
         }
         return writer.end(eventContext);
     }
