@@ -1,7 +1,7 @@
-package org.folio.processing.mapping.mapper.reader.factory;
+package org.folio.processing.mapping.reader;
 
-import org.folio.processing.mapping.mapper.reader.MarcBibliographicReader;
 import org.folio.processing.mapping.mapper.reader.Reader;
+import org.folio.processing.mapping.mapper.reader.ReaderFactory;
 import org.folio.processing.mapping.model.context.MappingProfile;
 
 import static org.folio.processing.mapping.model.context.MappingProfile.EntityType.MARC_BIBLIOGRAPHIC;

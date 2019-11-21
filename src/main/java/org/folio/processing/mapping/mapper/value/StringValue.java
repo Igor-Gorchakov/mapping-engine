@@ -11,4 +11,9 @@ public class StringValue implements Value<String> {
     public String getValue() {
         return value;
     }
+
+    @Override
+    public ValueType getType() {
+        return ValueType.STRING;
+    }
 }

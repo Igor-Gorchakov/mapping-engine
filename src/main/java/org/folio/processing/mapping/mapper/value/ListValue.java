@@ -1,14 +1,21 @@
 package org.folio.processing.mapping.mapper.value;
 
-public class ListValue implements Value<java.util.List<StringValue>> {
-    private final java.util.List<StringValue> list;
+import java.util.List;
 
-    public ListValue(java.util.List<StringValue> list) {
+public class ListValue implements Value<List<String>> {
+    private final List<String> list;
+
+    public ListValue(List<String> list) {
         this.list = list;
     }
 
     @Override
-    public java.util.List<StringValue> getValue() {
-        return null;
+    public List<String> getValue() {
+        return list;
+    }
+
+    @Override
+    public ValueType getType() {
+        return ValueType.LIST;
     }
 }

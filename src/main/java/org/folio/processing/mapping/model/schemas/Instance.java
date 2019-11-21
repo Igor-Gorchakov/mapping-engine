@@ -3,7 +3,7 @@ package org.folio.processing.mapping.model.schemas;
 public class Instance {
 
     private String id;
-    private String name;
+    private String indexTitle;
 
     public Instance() {
     }
@@ -16,15 +16,11 @@ public class Instance {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getIndexTitle() {
+        return indexTitle;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setIndexTitle(String indexTitle) {
+        this.indexTitle = indexTitle;
     }
 }

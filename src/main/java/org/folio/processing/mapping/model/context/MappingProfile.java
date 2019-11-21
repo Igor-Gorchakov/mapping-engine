@@ -11,6 +11,11 @@ public class MappingProfile {
     private EntityType existingRecordType;
     private List<Rule> mappingRules;
 
+    public MappingProfile(EntityType incomingRecordType, EntityType existingRecordType) {
+        this.incomingRecordType = incomingRecordType;
+        this.existingRecordType = existingRecordType;
+    }
+
     public EntityType getIncomingRecordType() {
         return incomingRecordType;
     }

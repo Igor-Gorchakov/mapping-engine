@@ -1,30 +1,20 @@
 package org.folio.processing.mapping.model.context;
 
 public class Rule {
-    private String fieldName;
-    private String fieldCode;
+    private String fieldPath;
     private String ruleExpression;
 
-    public Rule(String fieldName, String fieldCode, String ruleExpression) {
-        this.fieldName = fieldName;
-        this.fieldCode = fieldCode;
+    public Rule(String fieldPath, String ruleExpression) {
+        this.fieldPath = fieldPath;
         this.ruleExpression = ruleExpression;
     }
 
-    public String getFieldName() {
-        return fieldName;
+    public String getFieldPath() {
+        return fieldPath;
     }
 
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
-    }
-
-    public String getFieldCode() {
-        return fieldCode;
-    }
-
-    public void setFieldCode(String fieldCode) {
-        this.fieldCode = fieldCode;
+    public void setFieldPath(String fieldPath) {
+        this.fieldPath = fieldPath;
     }
 
     public String getRuleExpression() {
