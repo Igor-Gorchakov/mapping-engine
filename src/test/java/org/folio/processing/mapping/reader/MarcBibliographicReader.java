@@ -11,11 +11,13 @@ import static org.folio.processing.mapping.model.context.MappingProfile.EntityTy
 public class MarcBibliographicReader implements Reader {
 
     private String marcBibliographicRecord;
+    private boolean initialized = true;
 
     @Override
     public void initialize(EventContext eventContext) {
         if (eventContext.getObjects().containsKey(MARC_BIBLIOGRAPHIC.value())) {
             this.marcBibliographicRecord = eventContext.getObjects().get(MARC_BIBLIOGRAPHIC.value());
+            this.initialized = true;
         } else {
             throw new IllegalArgumentException("Can not initialize MarcBibliographicReader, no record found in context");
         }
@@ -23,6 +25,11 @@ public class MarcBibliographicReader implements Reader {
 
     @Override
     public Value read(Rule rule) {
-        return new StringValue("test index title");
+        if (initialized) {
+            // TODO read index title from record
+            return new StringValue("test index title");
+        } else {
+            throw new IllegalStateException("MarcBibliographicReader has to be initialized before read");
+        }
     }
 }

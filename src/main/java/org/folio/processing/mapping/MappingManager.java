@@ -11,6 +11,15 @@ import org.folio.processing.mapping.model.context.MappingProfile;
 
 import java.util.logging.Logger;
 
+/**
+ * MappingManager is the entry point to work with mapping.
+ * Provides methods method to register factories and start mapping.
+ *
+ * @see MappingProfile
+ * @see FactoryRegistry
+ * @see Reader
+ * @see Writer
+ */
 public final class MappingManager {
     private final static Logger LOGGER = Logger.getLogger(MappingManager.class.getName());
     private static final FactoryRegistry FACTORY_REGISTRY = new FactoryRegistry();
@@ -25,15 +34,27 @@ public final class MappingManager {
             Writer writer = FACTORY_REGISTRY.createWriter(mappingProfile.getExistingRecordType());
             new Mapper(reader, writer).map(eventContext);
         } catch (Exception e) {
-            LOGGER.warning("Exception occurred in Mapper " + e.getMessage());
+            LOGGER.warning(String.format("Exception occurred in Mapper [%s]", e));
         }
         return eventContext;
     }
 
+    /**
+     * Registers reader factory
+     *
+     * @param factory reader factory
+     * @return true if registry changed as a result of the call
+     */
     public static boolean registerReaderFactory(ReaderFactory factory) {
         return FACTORY_REGISTRY.registerReaderFactory(factory);
     }
 
+    /**
+     * Registers writer factory
+     *
+     * @param factory writer factory
+     * @return true if registry changed as a result of the call
+     */
     public static boolean registerWriterFactory(WriterFactory factory) {
         return FACTORY_REGISTRY.registerWriterFactory(factory);
     }

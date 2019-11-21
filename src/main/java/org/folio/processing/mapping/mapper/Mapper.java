@@ -10,6 +10,9 @@ import org.folio.processing.mapping.model.context.Rule;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * The central component for reading data from source and writing data to target
+ */
 public class Mapper {
     private final Reader reader;
     private final Writer writer;
@@ -19,6 +22,13 @@ public class Mapper {
         this.writer = writer;
     }
 
+    /**
+     * Template method for mapping
+     *
+     * @param eventContext event context
+     * @return event context
+     * @throws IOException if a low-level I/O problem occurs (JSON serialization)
+     */
     public EventContext map(EventContext eventContext) throws IOException {
         MappingProfile mappingProfile = eventContext.getMappingProfile();
         reader.initialize(eventContext);

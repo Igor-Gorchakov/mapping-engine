@@ -4,6 +4,10 @@ import org.folio.processing.mapping.mapper.value.ListValue;
 import org.folio.processing.mapping.mapper.value.StringValue;
 import org.folio.processing.mapping.mapper.value.Value;
 
+
+/**
+ * Abstract class for writers
+ */
 public abstract class AbstractWriter implements Writer {
 
     @Override
