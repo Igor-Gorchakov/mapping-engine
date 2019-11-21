@@ -23,7 +23,7 @@ public class Mapper {
     }
 
     /**
-     * Template method for mapping
+     * Template method for mapping.
      *
      * @param eventContext event context
      * @return event context

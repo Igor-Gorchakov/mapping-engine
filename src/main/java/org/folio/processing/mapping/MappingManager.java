@@ -27,6 +27,14 @@ public final class MappingManager {
     private MappingManager() {
     }
 
+    /**
+     * The entry point for mapping.
+     *
+     * @param eventContext event context
+     * @return event context
+     * @see MappingProfile
+     * @see Mapper
+     */
     public static EventContext map(EventContext eventContext) {
         try {
             MappingProfile mappingProfile = eventContext.getMappingProfile();
