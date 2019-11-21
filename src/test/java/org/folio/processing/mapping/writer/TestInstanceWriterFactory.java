@@ -4,10 +4,10 @@ import org.folio.processing.mapping.mapper.writer.Writer;
 import org.folio.processing.mapping.mapper.writer.WriterFactory;
 import org.folio.processing.mapping.model.context.MappingProfile.EntityType;
 
-public class InstanceWriterFactory implements WriterFactory {
+public class TestInstanceWriterFactory implements WriterFactory {
     @Override
     public Writer createWriter() {
-        return new InstanceWriter();
+        return new TestInstanceWriter();
     }
 
     @Override

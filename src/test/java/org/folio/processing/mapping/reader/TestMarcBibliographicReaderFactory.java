@@ -6,10 +6,10 @@ import org.folio.processing.mapping.model.context.MappingProfile;
 
 import static org.folio.processing.mapping.model.context.MappingProfile.EntityType.MARC_BIBLIOGRAPHIC;
 
-public class MarcBibliographicReaderFactory implements ReaderFactory {
+public class TestMarcBibliographicReaderFactory implements ReaderFactory {
     @Override
     public Reader createReader() {
-        return new MarcBibliographicReader();
+        return new TestMarcBibliographicReader();
     }
 
     @Override

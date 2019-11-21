@@ -8,7 +8,7 @@ import org.folio.processing.mapping.model.context.Rule;
 
 import static org.folio.processing.mapping.model.context.MappingProfile.EntityType.MARC_BIBLIOGRAPHIC;
 
-public class MarcBibliographicReader implements Reader {
+public class TestMarcBibliographicReader implements Reader {
 
     private String marcBibliographicRecord;
     private boolean initialized = true;

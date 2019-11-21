@@ -5,8 +5,8 @@ import org.folio.processing.mapping.model.context.EventContext;
 import org.folio.processing.mapping.model.context.MappingProfile;
 import org.folio.processing.mapping.model.context.Rule;
 import org.folio.processing.mapping.model.schemas.Instance;
-import org.folio.processing.mapping.reader.MarcBibliographicReaderFactory;
-import org.folio.processing.mapping.writer.InstanceWriterFactory;
+import org.folio.processing.mapping.reader.TestMarcBibliographicReaderFactory;
+import org.folio.processing.mapping.writer.TestInstanceWriterFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -35,8 +35,8 @@ public class MappingManagerUnitTest {
         eventContext.putObject(INSTANCE.value(), givenInstance);
         eventContext.setMappingProfile(mappingProfile);
         // when
-        MappingManager.registerReaderFactory(new MarcBibliographicReaderFactory());
-        MappingManager.registerWriterFactory(new InstanceWriterFactory());
+        MappingManager.registerReaderFactory(new TestMarcBibliographicReaderFactory());
+        MappingManager.registerWriterFactory(new TestInstanceWriterFactory());
         MappingManager.map(eventContext);
         // then
         assertNotNull(eventContext.getObjects().get(MARC_BIBLIOGRAPHIC.value()));

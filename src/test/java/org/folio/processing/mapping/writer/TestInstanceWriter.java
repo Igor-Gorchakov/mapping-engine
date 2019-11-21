@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import static org.folio.processing.mapping.model.context.MappingProfile.EntityType.INSTANCE;
 
-public class InstanceWriter extends AbstractWriter {
+public class TestInstanceWriter extends AbstractWriter {
     private Instance instance;
 
     @Override
