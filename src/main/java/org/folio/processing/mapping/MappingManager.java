@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  * MappingManager is the entry point to work with mapping.
- * Provides methods method to register factories and start mapping.
+ * Provides methods to register factories and start mapping.
  *
  * @see MappingProfile
  * @see FactoryRegistry
