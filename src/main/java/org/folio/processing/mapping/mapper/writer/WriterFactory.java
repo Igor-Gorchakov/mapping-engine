@@ -18,9 +18,10 @@ public interface WriterFactory {
     Writer createWriter();
 
     /**
+     * Checks if factory can produce entity of given type
      *
-     * @param entityType
-     * @return
+     * @param entityType type of entity
+     * @return true if given type of entity is eligible
      */
     boolean isEligibleForEntityType(EntityType entityType);
 }

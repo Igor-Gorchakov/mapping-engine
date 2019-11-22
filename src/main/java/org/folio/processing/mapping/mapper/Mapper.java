@@ -11,13 +11,19 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * The central component for reading data from source and writing data to target
+ * The central component for reading data from source and writing data to target.
+ *
+ * @see Reader
+ * @see Writer
+ * @see Value
  */
 public interface Mapper {
 
     /**
      * Template method for mapping.
      *
+     * @param reader       Reader to read values from given event context
+     * @param writer       Writer to write values to given event context
      * @param eventContext event context
      * @return event context
      * @throws IOException if a low-level I/O problem occurs (JSON serialization)

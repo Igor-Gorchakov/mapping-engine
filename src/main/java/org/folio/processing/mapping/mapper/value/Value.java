@@ -27,4 +27,12 @@ public interface Value<T> {
      * @return type of value
      */
     ValueType getType();
+
+    /**
+     * Enumeration to describe type of generic value
+     */
+    enum ValueType {
+        STRING,
+        LIST
+    }
 }

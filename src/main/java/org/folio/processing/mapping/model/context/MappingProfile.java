@@ -62,7 +62,7 @@ public class MappingProfile {
 
         private final String value;
 
-        private EntityType(String value) {
+        EntityType(String value) {
             this.value = value;
         }
 

@@ -40,7 +40,8 @@ public final class MappingManager {
             MappingProfile mappingProfile = eventContext.getMappingProfile();
             Reader reader = FACTORY_REGISTRY.createReader(mappingProfile.getIncomingRecordType());
             Writer writer = FACTORY_REGISTRY.createWriter(mappingProfile.getExistingRecordType());
-            return new Mapper(){}.map(reader, writer, eventContext);
+            return new Mapper() {
+            }.map(reader, writer, eventContext);
         } catch (Exception e) {
             LOGGER.warning(String.format("Exception occurred in Mapper [%s]", e));
             throw new RuntimeException(e);
