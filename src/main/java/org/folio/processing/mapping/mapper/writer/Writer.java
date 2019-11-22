@@ -32,11 +32,5 @@ public interface Writer {
      */
     void write(String fieldPath, Value value);
 
-    /**
-     * Ends up writing to the underlying entity.
-     *
-     * @param eventContext event context
-     * @throws JsonProcessingException if JSON serialization problem occurs
-     */
-    void end(EventContext eventContext) throws JsonProcessingException;
+    EventContext getResult(EventContext eventContext) throws JsonProcessingException;
 }

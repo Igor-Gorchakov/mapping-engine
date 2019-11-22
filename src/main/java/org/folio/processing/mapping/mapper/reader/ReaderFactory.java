@@ -18,9 +18,9 @@ public interface ReaderFactory {
     Reader createReader();
 
     /**
-     * Returns type of entity with which Reader operates
      *
-     * @return entity type
+     * @param entityType
+     * @return
      */
-    EntityType getEntityType();
+    boolean isEligibleForEntityType(EntityType entityType);
 }

@@ -13,14 +13,7 @@ import java.util.List;
 /**
  * The central component for reading data from source and writing data to target
  */
-public class Mapper {
-    private final Reader reader;
-    private final Writer writer;
-
-    public Mapper(Reader reader, Writer writer) {
-        this.reader = reader;
-        this.writer = writer;
-    }
+public interface Mapper {
 
     /**
      * Template method for mapping.
@@ -29,7 +22,7 @@ public class Mapper {
      * @return event context
      * @throws IOException if a low-level I/O problem occurs (JSON serialization)
      */
-    public EventContext map(EventContext eventContext) throws IOException {
+    default EventContext map(Reader reader, Writer writer, EventContext eventContext) throws IOException {
         MappingProfile mappingProfile = eventContext.getMappingProfile();
         reader.initialize(eventContext);
         writer.initialize(eventContext);
@@ -38,7 +31,6 @@ public class Mapper {
             Value value = reader.read(rule);
             writer.write(rule.getFieldPath(), value);
         }
-        writer.end(eventContext);
-        return eventContext;
+        return writer.getResult(eventContext);
     }
 }
