@@ -27,7 +27,7 @@ public class FactoryRegistry {
      */
     public Reader createReader(EntityType entityType) {
         Optional<ReaderFactory> optionalReaderFactory = READER_FACTORIES.stream()
-                .filter(readerFactory -> readerFactory.getEntityType().equals(entityType))
+                .filter(readerFactory -> readerFactory.isEligibleForEntityType(entityType))
                 .findFirst();
         if (optionalReaderFactory.isPresent()) {
             ReaderFactory readerFactory = optionalReaderFactory.get();
@@ -45,7 +45,7 @@ public class FactoryRegistry {
      */
     public Writer createWriter(EntityType entityType) {
         Optional<WriterFactory> optionalWriterFactory = WRITER_FACTORIES.stream()
-                .filter(writerFactory -> writerFactory.getEntityType().equals(entityType))
+                .filter(writerFactory -> writerFactory.isEligibleForEntityType(entityType))
                 .findFirst();
         if (optionalWriterFactory.isPresent()) {
             WriterFactory writerFactory = optionalWriterFactory.get();

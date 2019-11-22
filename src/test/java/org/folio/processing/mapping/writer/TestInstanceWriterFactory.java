@@ -11,7 +11,8 @@ public class TestInstanceWriterFactory implements WriterFactory {
     }
 
     @Override
-    public EntityType getEntityType() {
-        return EntityType.INSTANCE;
+    public boolean isEligibleForEntityType(EntityType entityType) {
+        return EntityType.INSTANCE == entityType;
     }
+
 }

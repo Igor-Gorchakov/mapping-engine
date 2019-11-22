@@ -13,7 +13,7 @@ public class TestMarcBibliographicReaderFactory implements ReaderFactory {
     }
 
     @Override
-    public MappingProfile.EntityType getEntityType() {
-        return MARC_BIBLIOGRAPHIC;
+    public boolean isEligibleForEntityType(MappingProfile.EntityType entityType) {
+        return MARC_BIBLIOGRAPHIC == entityType;
     }
 }

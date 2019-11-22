@@ -18,9 +18,9 @@ public interface WriterFactory {
     Writer createWriter();
 
     /**
-     * Returns type of entity with which Writer operates
      *
-     * @return entity type
+     * @param entityType
+     * @return
      */
-    EntityType getEntityType();
+    boolean isEligibleForEntityType(EntityType entityType);
 }

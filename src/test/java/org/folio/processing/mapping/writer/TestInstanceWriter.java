@@ -25,6 +25,12 @@ public class TestInstanceWriter extends AbstractWriter {
     }
 
     @Override
+    public EventContext getResult(EventContext eventContext) throws JsonProcessingException {
+        eventContext.putObject(INSTANCE.value(), new ObjectMapper().writeValueAsString(this.instance));
+        return eventContext;
+    }
+
+    @Override
     protected void writeStringValue(String fieldPath, StringValue value) {
         if (fieldPath.equals("indexTitle")) {
             this.instance.setIndexTitle("test index title");
@@ -34,9 +40,5 @@ public class TestInstanceWriter extends AbstractWriter {
     @Override
     protected void writeListValue(String fieldPath, ListValue value) {
 
-    }
-
-    public void end(EventContext eventContext) throws JsonProcessingException {
-        eventContext.putObject(INSTANCE.value(), new ObjectMapper().writeValueAsString(this.instance));
     }
 }
